@@ -1,0 +1,68 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_md0e3"]
+[ext_resource type="Texture2D" path="res://assets/characters.png" id="2_4ra3w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
+atlas = ExtResource("2_4ra3w")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
+atlas = ExtResource("2_4ra3w")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xwavj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uy6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4w8v")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nenq2"]
+size = Vector2(14, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_md484"]
+size = Vector2(12, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipns3"]
+size = Vector2(12, 6)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1171144192]
+collision_layer = 4
+script = ExtResource("1_md0e3")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1285995406]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_xwavj")
+animation = &"walk"
+
+[node name="Shape" type="CollisionShape2D" parent="." unique_id=1100982886]
+shape = SubResource("RectangleShape2D_nenq2")
+
+[node name="FloorCheck" type="RayCast2D" parent="." unique_id=1513536357]
+position = Vector2(-8, 0)
+target_position = Vector2(0, 10)
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1461201021]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="Shape" type="CollisionShape2D" parent="Hurtbox" unique_id=128858371]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_md484")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1190309119]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+
+[node name="Shape" type="CollisionShape2D" parent="Hitbox" unique_id=495711626]
+shape = SubResource("RectangleShape2D_ipns3")
