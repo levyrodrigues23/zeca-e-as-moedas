@@ -1,0 +1,42 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/coin.gd" id="1_i64fm"]
+[ext_resource type="Texture2D" path="res://assets/tiles.png" id="2_11l1o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d14el"]
+size = Vector2(10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ikuy"]
+atlas = ExtResource("2_11l1o")
+region = Rect2(198, 126, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnlwo"]
+atlas = ExtResource("2_11l1o")
+region = Rect2(216, 126, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jig8b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ikuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnlwo")
+}],
+"loop": 1,
+"name": &"spin",
+"speed": 4.0
+}]
+
+[node name="Coin" type="Area2D" unique_id=626662060]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_i64fm")
+
+[node name="Shape" type="CollisionShape2D" parent="." unique_id=811631470]
+shape = SubResource("RectangleShape2D_d14el")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1466746709]
+sprite_frames = SubResource("SpriteFrames_jig8b")
+animation = &"spin"
