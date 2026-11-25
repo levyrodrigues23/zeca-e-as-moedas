@@ -28,14 +28,15 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	if dir != 0.0:
 		sprite.flip_h = dir > 0.0
-	if not is_on_floor():
-		sprite.stop()
-		sprite.frame = 1
+	if invincible > 0.0:
+		sprite.play("hurt")
+	elif not is_on_floor():
+		sprite.play("jump")
 	elif dir != 0.0:
 		sprite.play("walk")
 	else:
+		sprite.animation = &"walk"
 		sprite.stop()
-		sprite.frame = 0
 	invincible = maxf(invincible - delta, 0.0)
 	sprite.visible = invincible == 0.0 or int(invincible * 12.0) % 2 == 0
 	if invincible == 0.0 and lives > 0:

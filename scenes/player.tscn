@@ -11,6 +11,14 @@ region = Rect2(0, 0, 24, 24)
 atlas = ExtResource("2_qhqgy")
 region = Rect2(24, 0, 24, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jump"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hurt"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(72, 0, 24, 24)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_tuyoq"]
 animations = [{
 "frames": [{
@@ -23,6 +31,22 @@ animations = [{
 "loop": 1,
 "name": &"walk",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jump")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hurt")
+}],
+"loop": 1,
+"name": &"hurt",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fjrip"]
@@ -55,12 +79,12 @@ monitorable = false
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_smehm")
 
-[node name="Pisao" type="Area2D" parent="." unique_id=896096637]
+[node name="Hitbox" type="Area2D" parent="." unique_id=896096637]
 collision_layer = 8
 collision_mask = 0
 monitoring = false
 
-[node name="Shape" type="CollisionShape2D" parent="Pisao" unique_id=334403164]
+[node name="Shape" type="CollisionShape2D" parent="Hitbox" unique_id=334403164]
 position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_ur7pv")
 

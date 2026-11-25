@@ -17,11 +17,14 @@ Plataforma 2D curto (1 a 2 minutos), feito em Godot 4.7 para PC.
 | Personagem CharacterBody2D | `scenes/player.tscn` |
 | Camera2D | filha do Player, com suavização e limites da fase |
 | TileMap com física | `TileMapLayer` com camada de colisão nos tiles |
-| Autotileset | terrain "grama" (16 combinações de bordas) em `assets/tileset.tres` |
+| Autotileset | terrain "grama" (16 combinações de bordas) em `assets/tileset.tres`; terreno montado com `set_cells_terrain_connect` em `tools/montar_fase.gd` |
 | Inimigo com hurtbox | `Hurtbox` na cabeça do bichinho, recebe o pisão do Zeca |
 | Inimigo com hitbox | `Hitbox` no corpo do bichinho, tira vida do Zeca |
-| Extra | moedas com contador e vidas no HUD |
+| Itens | moeda (+1 ponto) e espinho (-1 vida) |
+| Instanciado por código | `Coin` e `Spike` criados em laço no `level.gd`; a nave (`ufo.tscn`) invoca um `Enemy` a cada 3,5 s (máx. 3) |
+| Game Over | `scenes/game_over.tscn` com nome, créditos e botão para voltar |
+| HUD | moedas com contador e vidas |
 
 ## Arte
 
-Kenney Pixel Platformer (CC0) e fonte Pixelify Sans (OFL).
+Autoral, gerada por `tools/gerar_arte.py` com auxílio de IA. Fonte Pixelify Sans (OFL).

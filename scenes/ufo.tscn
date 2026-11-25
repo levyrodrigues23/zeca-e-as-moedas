@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ufo.gd" id="1_ufo"]
+[ext_resource type="Texture2D" path="res://assets/tiles.png" id="2_ufo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufo"]
+atlas = ExtResource("2_ufo")
+region = Rect2(288, 126, 36, 18)
+
+[node name="Ufo" type="Node2D"]
+script = ExtResource("1_ufo")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_ufo")

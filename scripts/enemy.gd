@@ -1,6 +1,7 @@
+class_name Enemy
 extends CharacterBody2D
 
-const SPEED := 30.0
+const SPEED := 45.0
 const GRAVITY := 800.0
 
 var dir := -1.0
